@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Notification SMS Forwarder</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #555;
+    --accent: #1565C0;
+    --border: #e0e0e0;
+    --code-bg: #f5f5f5;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+    line-height: 1.65;
+    color: var(--fg);
+    background: var(--bg);
+    font-size: 16px;
+  }
+  header {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+  }
+  h1 {
+    font-size: 28px;
+    margin: 0 0 8px;
+    color: var(--accent);
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 36px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 {
+    font-size: 16px;
+    margin: 20px 0 8px;
+  }
+  p, li { margin: 8px 0; }
+  ul, ol { padding-left: 24px; }
+  li { margin: 6px 0; }
+  code {
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 14px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th {
+    background: var(--code-bg);
+    font-weight: 600;
+  }
+  .callout {
+    background: #e8f4fd;
+    border-left: 4px solid var(--accent);
+    padding: 14px 18px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .callout strong { color: var(--accent); }
+  footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+  }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Privacy Policy</h1>
+  <p class="subtitle">
+    <strong>Notification SMS Forwarder</strong><br>
+    Effective date: <span id="effective-date">October 3, 2026</span>
+  </p>
+</header>
+
+<div class="callout">
+  <strong>Summary:</strong> This app reads incoming SMS notifications and forwards
+  their text to an email address <em>you</em> choose. Everything stays between your
+  phone and Gmail's SMTP servers. We do not run a server, we do not collect analytics,
+  and we do not sell or share your data with anyone.
+</div>
+
+<h2>1. Who we are</h2>
+<p>
+  Notification SMS Forwarder ("the App", "we", "us") is an Android application
+  developed and published by an independent developer. The App's purpose is to
+  automatically forward incoming SMS notification content to an email address
+  that you, the user, configure inside the App.
+</p>
+<p>
+  This policy explains what data the App accesses, how it is used, where it goes,
+  and what control you have over it.
+</p>
+
+<h2>2. What data the App accesses</h2>
+
+<h3>2.1 SMS notification content</h3>
+<p>
+  The App uses Android's <code>NotificationListenerService</code> to read the
+  content of notifications posted by messaging applications installed on your
+  device (for example, Google Messages, Samsung Messages, or AOSP Messages).
+  This includes the sender's phone number or name and the text of the message.
+</p>
+<p>
+  The App does <strong>not</strong> read your SMS database directly. It only sees
+  the content that your messaging app chooses to display in a notification.
+  If your device is configured to hide sensitive notification content on the
+  lock screen, the App will only see the redacted placeholder instead of the
+  full message.
+</p>
+
+<h3>2.2 Contact names</h3>
+<p>
+  If you grant the <code>READ_CONTACTS</code> permission, the App looks up the
+  sender's phone number in your device's contacts so that the forwarded email
+  can show a friendly name (for example, "John Doe") instead of a raw phone
+  number. Contact data is queried locally and never leaves your device except
+  as the resolved name included in the forwarded email.
+</p>
+
+<h3>2.3 Email credentials you provide</h3>
+<p>
+  To send emails, the App requires:
+</p>
+<ul>
+  <li>Your Gmail address (as the sending account)</li>
+  <li>A 16-character Google App Password</li>
+  <li>The target email address where forwards should be delivered</li>
+</ul>
+
+<h2>3. Where your data is stored</h2>
+<p>
+  All settings — the target email, sender Gmail address, and App Password —
+  are stored <strong>locally on your device</strong> in Android's private
+  SharedPreferences storage. This storage is sandboxed by the Android operating
+  system and is not accessible to other apps.
+</p>
+<p>
+  We do not transmit, upload, or back up your credentials to any server we
+  control. We do not have a server.
+</p>
+
+<h2>4. Where your data is sent</h2>
+<p>
+  When an SMS notification is captured, the App opens a direct SMTP connection
+  from your phone to Google's mail servers at
+  <code>smtp.gmail.com:587</code> using STARTTLS encryption. The message content
+  is transmitted to that server and delivered to the target email address you
+  configured.
+</p>
+<p>
+  This is the <strong>only</strong> network transmission the App performs.
+  There are no other outbound connections.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Leaves your device?</th>
+      <th>Where it goes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SMS sender + message text</td>
+      <td>Yes — as email</td>
+      <td>Gmail SMTP → your chosen target email address</td>
+    </tr>
+    <tr>
+      <td>Resolved contact name</td>
+      <td>Yes — as email</td>
+      <td>Same as above</td>
+    </tr>
+    <tr>
+      <td>Gmail address + App Password</td>
+      <td>Yes — for SMTP login only</td>
+      <td>Google's SMTP authentication servers</td>
+    </tr>
+    <tr>
+      <td>App settings (target email, etc.)</td>
+      <td>No</td>
+      <td>Stored locally on device</td>
+    </tr>
+    <tr>
+      <td>Device identifiers, analytics, crash reports</td>
+      <td>No</td>
+      <td>Not collected</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>5. What we do NOT do</h2>
+<ul>
+  <li>We do not run any backend servers or databases.</li>
+  <li>We do not use analytics, tracking, or advertising SDKs.</li>
+  <li>We do not collect crash reports or usage statistics.</li>
+  <li>We do not sell, rent, or share your data with third parties.</li>
+  <li>We do not access your SMS database, call logs, location, camera,
+      microphone, or files.</li>
+  <li>We do not read notifications from apps other than the messaging apps
+      listed in the App's source code.</li>
+</ul>
+
+<h2>6. Third-party services</h2>
+<p>
+  The App uses <strong>Google Gmail SMTP</strong> to deliver emails. When your
+  message content passes through Google's servers, it is subject to
+  <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">
+  Google's Privacy Policy</a>. We do not control Google's handling of that data.
+</p>
+<p>
+  No other third-party services are used.
+</p>
+
+<h2>7. Data retention</h2>
+<p>
+  The App does not retain message content. Messages are transmitted once and
+  immediately discarded from the App's memory. Only your configuration settings
+  persist on the device until you uninstall the App or clear its data.
+</p>
+
+<h2>8. Your rights and controls</h2>
+<p>You can revoke any of the App's capabilities at any time:</p>
+<ul>
+  <li>
+    <strong>Notification access:</strong> Settings → Apps → Special access →
+    Notification access → toggle the App off.
+  </li>
+  <li>
+    <strong>Contacts access:</strong> Settings → Apps → Notification SMS
+    Forwarder → Permissions → Contacts → Deny.
+  </li>
+  <li>
+    <strong>All local data:</strong> Uninstall the App, or clear its data from
+    Settings → Apps → Notification SMS Forwarder → Storage → Clear data.
+  </li>
+</ul>
+<p>
+  Because the App does not operate a server, there is no remote data to delete.
+</p>
+
+<h2>9. Children's privacy</h2>
+<p>
+  The App is not directed at children under 13 and does not knowingly collect
+  data from them. The App is a personal productivity tool for adults.
+</p>
+
+<h2>10. Security</h2>
+<p>
+  App credentials are stored in Android's private SharedPreferences sandbox.
+  SMTP connections use STARTTLS encryption. We recommend using a Gmail App
+  Password rather than your primary account password, and revoking it at any
+  time from <a href="https://myaccount.google.com/apppasswords" target="_blank"
+  rel="noopener">myaccount.google.com/apppasswords</a>.
+</p>
+
+<h2>11. Changes to this policy</h2>
+<p>
+  If this policy changes, the effective date at the top of this page will be
+  updated. Material changes will be noted in the App's Play Store listing
+  description.
+</p>
+
+<h2>12. Contact</h2>
+<p>
+  Questions about this policy can be sent to:<br>
+  <strong><a href="mailto:YOUR_EMAIL_HERE@example.com">YOUR_EMAIL_HERE@example.com</a></strong>
+</p>
+
+<footer>
+  &copy; <span id="year">2026</span> Notification SMS Forwarder. All rights reserved.
+</footer>
+
+<script>
+  // Auto-update the year in the footer.
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
